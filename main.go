@@ -11,6 +11,8 @@ func main() {
 	w := a.NewWindow("Hello World")
 	w.Resize(fyne.NewSize(1366, 768))
 
-	w.SetContent(widget.NewLabel("Hello World!"))
+	input := widget.NewMultiLineEntry()
+
+	w.SetContent(input)
 	w.ShowAndRun()
 }
