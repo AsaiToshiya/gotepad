@@ -11,9 +11,7 @@ func main() {
 	w := a.NewWindow("Hello World")
 	w.Resize(fyne.NewSize(1366, 768))
 
-	fileMenu := fyne.NewMenu("File",
-		fyne.NewMenuItem("Exit", func() { a.Quit() }),
-	)
+	fileMenu := fyne.NewMenu("File")
 	mainMenu := fyne.NewMainMenu(
 		fileMenu,
 	)
