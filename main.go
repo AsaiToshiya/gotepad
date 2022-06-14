@@ -6,13 +6,9 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-func main() {
-	a := app.New()
-	w := a.NewWindow("Hello World")
-	w.Resize(fyne.NewSize(1366, 768))
+var input = widget.NewMultiLineEntry()
 
-	input := widget.NewMultiLineEntry()
-
+func createMenus() *fyne.MainMenu {
 	newMenuItem := fyne.NewMenuItem("New", func() { input.SetText("") })
 	fileMenu := fyne.NewMenu("File",
 		newMenuItem,
@@ -20,7 +16,15 @@ func main() {
 	mainMenu := fyne.NewMainMenu(
 		fileMenu,
 	)
-	w.SetMainMenu(mainMenu)
+	return mainMenu
+}
+
+func main() {
+	a := app.New()
+	w := a.NewWindow("Hello World")
+	w.Resize(fyne.NewSize(1366, 768))
+
+	w.SetMainMenu(createMenus())
 
 	w.SetContent(input)
 	w.ShowAndRun()
