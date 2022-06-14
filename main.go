@@ -11,13 +11,16 @@ func main() {
 	w := a.NewWindow("Hello World")
 	w.Resize(fyne.NewSize(1366, 768))
 
-	fileMenu := fyne.NewMenu("File")
+	input := widget.NewMultiLineEntry()
+
+	newMenuItem := fyne.NewMenuItem("New", func() { input.SetText("") })
+	fileMenu := fyne.NewMenu("File",
+		newMenuItem,
+	)
 	mainMenu := fyne.NewMainMenu(
 		fileMenu,
 	)
 	w.SetMainMenu(mainMenu)
-
-	input := widget.NewMultiLineEntry()
 
 	w.SetContent(input)
 	w.ShowAndRun()
