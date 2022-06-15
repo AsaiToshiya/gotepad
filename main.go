@@ -8,13 +8,17 @@ import (
 
 var input = widget.NewMultiLineEntry()
 
-func createMenus() *fyne.MainMenu {
+func createFileMenu() *fyne.Menu {
 	newMenuItem := fyne.NewMenuItem("New", func() { input.SetText("") })
 	fileMenu := fyne.NewMenu("File",
 		newMenuItem,
 	)
+	return fileMenu
+}
+
+func createMenus() *fyne.MainMenu {
 	mainMenu := fyne.NewMainMenu(
-		fileMenu,
+		createFileMenu(),
 	)
 	return mainMenu
 }
